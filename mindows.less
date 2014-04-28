@@ -1,114 +1,395 @@
 /* 
 Mindows stylesheet.
-
-
 */
 
 @onehp: 100%;
 
+.transition(@args) {
+    -webkit-transition: @args;
+    -moz-transition: @args;
+    -o-transition: @args;
+    -ms-transition: @args;
+    transition: @args;
+}
+
+.transforms(@args) {
+    -webkit-transform: @args;
+    -moz-transform: @args;
+    -o-transform: @args;
+    -ms-transform: @args;
+    transform: @args;
+}
+
+* {
+   margin: 0px;
+   padding: 0px;
+}
 
 img{
 	max-width: @onehp;
 }
-.ie6 img {
-	width:@onehp;
+
+header {
+  background-repeat:no-repeat;
+  margin: 0 0 15px 0;
 }
 
-header{
-	height:222px;
-	background-color:#363534;
-	margin:0 0 15px 0;
-}
+body{
+	max-width:1100px;
+	margin:0 auto;
+	  background-color: #ccc;
+	}
 
 .fluid {
-	clear: both;
-	margin-left: 0;
-	width: @onehp;
-	float: left;
-	display: block;
+  clear: both;
+  margin-left: 0;
+  width: @onehp;
+  float: left;
+  display: block;
 }
 
-.card{
-	height:222px;
-	width:333px;
-	background-color:#ccc;    
+.card {
+  cursor:crosshair;
+}
 
+.card:hover {
+	-webkit-transform: scale(0.98,0.98);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 1000ms;
+    -moz-transform: scale(0.98,0.98);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 1000ms;
 }
 
 .fluidList {
-    list-style:none;
-    list-style-image:none;
-    margin:0;
-    padding:0;        
+  list-style: none;
+  list-style-image: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Mobile Layout: 480px and below. */
-  
 .gridContainer {
-	margin-left: auto;
-	margin-right: auto;
-	width: 86.45%;
-	padding-left: 2.275%;
-	padding-right: 2.275%;
-	clear: none;
-	float: none;
+  margin-left: auto;
+  margin-right: auto;
+  width: 86.45%;
+  padding-left: 2.275%;
+  padding-right: 2.275%;
+  clear: none;
+  float: none;
 }
 
-.clearfix { *zoom: 1; }
+.clearfix {
+  *zoom: 1;
+}
+
 .card1 {
-width: @onehp;
-clear: both;
-margin-left: 0;
-margin-bottom:15px;
-}
-.zeroMargin_mobile {
-margin-left: 0;
+  width: @onehp;
+  clear: both;
+  margin-left: 0;
+  margin-bottom: 15px;
 }
 
+.zeroMargin_mobile {
+  margin-left: 0;
+}
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
-
 @media only screen and (min-width: 481px) {
-
-.gridContainer {
-	width: 90.675%;
-	padding-left: 1.1625%;
-	padding-right: 1.1625%;
-	clear: none;
-	float: none;
-	margin-left: auto;
-}
-.card1 {
-width: 48.7179%;
-clear: none;
-margin-left: 2.5641%;
-}
-.zeroMargin_tablet {
-margin-left: 0;
-}
+  .gridContainer {
+    width: 90.675%;
+    padding-left: 1.1625%;
+    padding-right: 1.1625%;
+    clear: none;
+    float: none;
+    margin-left: auto;
+  }
+  .card1 {
+    width: 48.7179%;
+    clear: none;
+    margin-left: 2.5641%;
+  }
+  .zeroMargin_tablet {
+    margin-left: 0;
+  }
 }
 
 /* Desktop Layout: 769px to a max of 1232px.  Inherits styles from: Mobile Layout and Tablet Layout. */
-
 @media only screen and (min-width: 769px) {
+  .gridContainer {
+    width: 88.5%;
+    max-width: 1232px;
+    padding-left: 0.75%;
+    padding-right: 0.75%;
+    margin: auto;
+    clear: none;
+    float: none;
+    margin-left: auto;
+  }
+  .card1 {
+    width: 32.2033%;
+    margin-left: 1.6949%;
+    clear: none;
+  }
+  .zeroMargin_desktop {
+    margin-left: 0;
+  }
+}
 
-.gridContainer {
-	width: 88.5%;
-	max-width: 1232px;
-	padding-left: 0.75%;
-	padding-right: 0.75%;
-	margin: auto;
-	clear: none;
-	float: none;
-	margin-left: auto;
+
+/* 
+Modal Windows Style
+*/
+
+
+.md-perspective,
+.md-perspective body {
+	height: @onehp;
+	overflow: hidden;
 }
-.card1 {
-width: 32.2033%;
-margin-left: 1.6949%;
-clear: none;
+
+.md-perspective body  {
+	background: #222;
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
+	perspective: 600px;
 }
-.zeroMargin_desktop {
-margin-left: 0;
+
+.container {
+	background: #e74c3c;
+	min-height: @onehp;
 }
+
+.md-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 50%;
+	max-width: 630px;
+	min-width: 320px;
+	height: auto;
+	z-index: 2000;
+	visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+	.transforms(translateX(-50%) translateY(-50%));
+}
+
+.md-show {
+	visibility: visible;
+}
+
+.md-overlay {
+	position: fixed;
+	width: @onehp;
+	height: @onehp;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	opacity: 0;
+	background: rgba(131,131,131,0.8);
+	.transition(all 0.3s);
+}
+
+.md-show ~ .md-overlay {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Content styles */
+.md-content {
+	color: #fff;
+	background: #e74c3c;
+	position: relative;
+	border-radius: 3px;
+	margin: 0 auto;
+}
+
+button {
+	border: none;
+	padding: 0.6em 1.2em;
+	background: #c0392b;
+	color: #fff;
+	font-family:"Gill Sans", "Gill Sans MT",Helvetica, Arial, sans-serif;
+	font-size: 1em;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	cursor: pointer;
+	display: inline-block;
+	margin: 3px 2px;
+	border-radius: 2px;
+}
+
+button:hover {
+	background: #A5281B;
+}
+
+.md-content h3 {
+	margin: 0;
+	padding: 0.4em;
+	text-align: center;
+	font-size: 2.4em;
+	font-weight: 300;
+	opacity: 0.8;
+	background: rgba(0,0,0,0.1);
+	border-radius: 3px 3px 0 0;
+}
+
+.md-content > div {
+	padding: 15px 40px 30px;
+	margin: 0;
+	font-weight: 300;
+	font-size: 1.15em;
+}
+
+.md-content > div p {
+	margin: 0;
+	padding: 10px 0;
+	font-family:"Gill Sans", "Gill Sans MT", Helvetica, Arial, sans-serif;
+}
+
+.md-content button {
+	display: block;
+	margin: 10px auto 0 auto;
+	font-size: 0.8em;
+}
+
+/* Modal styles animations/transitions */
+
+/* Effect 1: Fade in and scale up */
+.md-effect-1 .md-content {
+	.transforms(scale(0.7));
+	.transition(all 0.4s);
+	opacity: 0;
+	
+}
+
+.md-show.md-effect-1 .md-content {
+	.transforms(scale(1));
+	opacity: 1;
+}
+
+/* Effect 6: side fall */
+.md-effect-6.md-modal {
+	-webkit-perspective: 1300px;
+	-moz-perspective: 1300px;
+	perspective: 1300px;
+}
+
+.md-effect-6 .md-content {
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	.transforms(translate(30%) translateZ(600px) rotate(10deg));
+	opacity: 0;
+}
+
+.md-show.md-effect-6 .md-content {
+	.transition(all 0.3s ease-in);
+	.transforms(translate(0%) translateZ(0) rotate(0deg));
+	opacity: 1;
+}
+
+/* Effect 7:  slide and stick to top */
+.md-effect-7{
+	top: 0;
+	.transforms(translateX(-50%));
+}
+
+
+/* Effect 8: 3D flip horizontal */
+.md-effect-8.md-modal {
+	-webkit-perspective: 1300px;
+	-moz-perspective: 1300px;
+	perspective: 1300px;
+}
+
+
+/* Effect 9: 3D flip vertical */
+.md-effect-9.md-modal {
+	-webkit-perspective: 1300px;
+	-moz-perspective: 1300px;
+	perspective: 1300px;
+}
+
+.md-effect-9 .md-content {
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	.transforms(rotateX(-70deg));
+	.transition(all 0.3s);
+	opacity: 0;
+}
+
+.md-show.md-effect-9 .md-content {
+	.transforms(rotateX(0deg));
+	opacity: 1;
+}
+
+/* Effect 11: Super scaled */
+.md-effect-11 .md-content {
+	.transforms(scale(2));
+	.transition(all 0.3s);
+	opacity: 0;
+}
+
+.md-show.md-effect-11 .md-content {
+	.transforms(scale(1));
+	opacity: 1;
+}
+/* Effect 15:  3D Rotate in from left */
+.md-effect-15.md-modal {
+	-webkit-perspective: 1300px;
+	-moz-perspective: 1300px;
+	perspective: 1300px;
+}
+
+.md-effect-15 .md-content {
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform-origin: 0 @onehp;
+	-moz-transform-origin: 0 @onehp;
+	transform-origin: 0 @onehp;
+	opacity: 0;
+	.transition(all 0.3s);
+	.transforms(translateZ(100px) translateX(-30%) rotateY(90deg));
+}
+
+.md-show.md-effect-15 .md-content {
+	.transforms(translateZ(0px) translateX(0%) rotateY(0deg));
+	opacity: 1;
+}
+/* Effect 17:  Slide in from bottom with perspective on container */
+.md-show.md-effect-17 ~ .container {
+	height: @onehp;
+	overflow: hidden;
+	-webkit-transition: -webkit-transform 0.3s;
+	-moz-transition: -moz-transform 0.3s;
+	transition: transform 0.3s;
+}	
+
+.md-show.md-effect-17 ~ .container,
+.md-show.md-effect-17 ~ .md-overlay  {
+	.transforms(rotateX(-2deg));
+	-webkit-transform-origin: 50% 0%;
+	-moz-transform-origin: 50% 0%;
+	transform-origin: 50% 0%;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.md-effect-17 .md-content {
+	opacity: 0;
+	.transforms(translateY(200%));
+}
+
+.md-show.md-effect-17 .md-content {
+	.transforms(translateY(0));
+	.transition(all 0.3s 0.2s);
+	opacity: 1;
 
 }
